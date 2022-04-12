@@ -66,7 +66,7 @@ class Main {
 
   public static int ReadChoice() throws WrongChoice {
     String wybor = scan.nextLine();
-    if (!wybor.equals("0") && !wybor.equals("1") && !wybor.equals("2"))
+    if (!wybor.equals("0") && !wybor.equals("1") && !wybor.equals("2")&& !wybor.equals("3"))
       throw new WrongChoice();
     return Integer.parseInt(wybor);
   }
