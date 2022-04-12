@@ -1,2 +1,4 @@
 Krzysztof 20
 Janusz 40
+Szymon 12
+Konrad 12
