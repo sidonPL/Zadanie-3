@@ -9,6 +9,8 @@ class WrongStudentAge extends Exception{
 }
 class ParseError extends Exception {
 }
+class WrongStudentDate extends Exception{
+}
 class Main {
   public static Scanner scan = new Scanner(System.in);
 
@@ -44,6 +46,8 @@ class Main {
         System.out.println("Error");
       } catch (WrongChoice e) {
         System.out.println("Błędny wybór");
+      } catch (WrongStudentDate e){
+        System.out.println("Błędna data studenta");
       }
       }
     }
@@ -80,11 +84,21 @@ class Main {
     else
       return age;
   }
+  public static String ReadDate() throws WrongStudentDate {
+    scan.nextLine();
+    System.out.println("Podaj datę urodzenia studenta (DD-MM-YYYY): ");
+    String date = scan.nextLine();
+    if (date.length() != 10 || date.charAt(2) != '-' || date.charAt(5) != '-'
+            || (date.charAt(0) > '3' && date.charAt(1) > '1') || (date.charAt(3) > '1' && date.charAt(4) > '2'))
+      throw new WrongStudentDate();
 
-  public static void exercise1() throws IOException, WrongStudentName, WrongStudentAge {
+    return date;
+  }
+  public static void exercise1() throws IOException, WrongStudentName, WrongStudentAge, WrongStudentDate {
     var name = ReadName();
     var age = ReadAge();
-    (new Service1()).addStudent(new Student(name, age));
+    var date = ReadDate();
+    (new Service1()).addStudent(new Student(name, age, date));
 
   }
   public static void exercise2() throws IOException, ParseError {

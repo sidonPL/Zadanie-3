@@ -15,14 +15,14 @@ public class Service1 {
     b.close();
   }
 
-  public Collection<Student> getStudents() throws IOException {
+  public Collection<Student> getStudents() throws IOException, ParseError {
     var ret = new ArrayList<Student>();
     var f = new FileReader("db.txt");
     var reader = new BufferedReader(f);
     String line = "";
     while (true) {
       line = reader.readLine();
-      if(line == null)
+      if (line == null)
         break;
       ret.add(Student.Parse(line));
     }
@@ -30,7 +30,12 @@ public class Service1 {
     return ret;
   }
 
-  public Student findStudentByName(String name) {
+  public Student findStudentByName(String name) throws ParseError, IOException {
+    var students = this.getStudents();
+    for (Student current : students) {
+      if (current.GetName().equals(name))
+        return current;
+    }
     return null;
   }
 }

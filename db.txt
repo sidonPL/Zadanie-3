@@ -1,4 +1,1 @@
-Krzysztof 20
-Janusz 40
-Szymon 12
-Konrad 12
+Szymon 12 12-03-2001
