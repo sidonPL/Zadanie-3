@@ -33,6 +33,9 @@ class Main {
           case 2:
             exercise2();
             break;
+          case 3:
+            exercise3();
+            break;
           default:
             return;
         }
@@ -56,6 +59,7 @@ class Main {
     System.out.println("Wciśnij:");
     System.out.println("1 - aby dodać studenta");
     System.out.println("2 - aby wypisać wszystkich studentów");
+    System.out.println("3 - aby wyszukać studenta");
     System.out.println("0 - aby wyjść z programu");
     return ReadChoice();
   }
@@ -105,6 +109,17 @@ class Main {
     var students = (new Service1()).getStudents();
     for (Student current : students) {
       System.out.println(current.ToString());
+    }
+  }
+  public static void exercise3() throws IOException, ParseError {
+    System.out.println("Podaj imię: ");
+    var name = scan.nextLine();
+    var wanted = (new Service1()).findStudentByName(name);
+    if (wanted == null)
+      System.out.println("Nie znaleziono...");
+    else {
+      System.out.println("Znaleziono: ");
+      System.out.println(wanted.ToString());
     }
   }
 
